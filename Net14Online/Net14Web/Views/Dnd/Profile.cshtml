@@ -1,0 +1,18 @@
+﻿@using Net14Web.Models.Dnd
+@model HeroViewModel
+
+<div>
+    Это лист пресонажа по имени @Model.Name мне @Model.Age
+</div>
+<div>
+    У персонажа @Model.Coins монеток. Он из @Model.Race
+</div>
+<div>
+    <img src="@Model.AvatarUrl" />
+</div>
+
+<form action="/dnd/updateAvatar" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="heroId" value="@Model.Id" />
+    <input type="file" name="avatar" accept=".jpg" />
+    <input type="submit" value="Обновить аватар" />
+</form>

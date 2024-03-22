@@ -1,0 +1,76 @@
+﻿@using Net14Web.DbStuff.Models.GameShop
+@model List<Game>
+
+@{
+    Layout = "_LayoutGameShop";
+}
+
+@section Style
+{
+    <link href="~/css/games.css" rel="stylesheet" />
+}
+
+@section Script {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/gameShop/index.js"></script>
+}
+
+<div>
+    <a href="/GameShop/AddGame">AddGame</a>
+</div>
+
+<div class="games">
+    @foreach (var game in Model)
+    {
+        <div class="game">
+            <form action="/gameShop/delete" method="post">
+                <input type="hidden" name="id" value="@game.Id" />
+                <div>
+                    <input type="submit" value="X" />
+                </div>
+            </form>
+            <div>
+                <img src="@game.LogoUrl" />
+            </div>
+
+            <div class="game-footer">
+                <div class="name-block">
+                    <div>
+                        @game.Name
+                    </div>
+                    <div class="upgrade-name">
+                        <form action="/gameShop/upgrade" method="post">
+                            <input type="hidden" name="gameModel.Id" value="@game.Id" />
+                            <input type="hidden" name="gameModel.LogoUrl" value="@game.LogoUrl" />
+                            <input type="hidden" name="gameModel.Raiting" value="@game.Raiting" />
+                            <input type="hidden" name="gameModel.Genre" value="@game.Genre" />
+                            <div>
+                                <input type="text" name="gameModel.Name" />
+                            </div>
+                            <div>
+                                <input type="submit" value="Upd" />
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="view-button">
+                        <form action="/gameShop/profile" method="get">
+                            <input type="hidden" name="id" value="@game.Id" />
+                            <input type="submit" value="View" />
+                        </form>
+                    </div>
+                </div>
+                <div class="raiting-block">
+                    <div>
+                        @game.Raiting
+                    </div>
+                </div>
+                <div class="genre-block">
+                    <div>
+                        @game.Genre
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

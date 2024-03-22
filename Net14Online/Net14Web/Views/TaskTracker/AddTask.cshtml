@@ -1,0 +1,33 @@
+﻿@using Net14Web.Models.TaskTracker
+@model AddTaskViewModel
+@{
+    Layout = "_LayoutTaskTracker";
+}
+@section Style
+{
+    <link href="~/css/tasktracker.css" rel="stylesheet" />
+}
+<section class="add-form">
+    <div class="add-form__container">
+        <button class="delete-icon delete-icon_white"><a href="/TaskTracker/Index">&#10006</a></button>
+        <h3 class="add-form__title">НОВАЯ ЗАДАЧА</h3>
+
+        <form method="post" class="add-form__form">
+
+            @Html.TextBoxFor(x => x.Name, new { placeholder = "Название", @class = "add-form__input" })
+            @Html.ValidationMessageFor(x => x.Name)
+            
+
+            @Html.TextAreaFor(x => x.Description, new { placeholder = "Описание", @class = "add-form__input add-form__input_description" })
+            @Html.ValidationMessageFor(x => x.Description)
+
+            <label class="add-form__dropdown-label">Приоритет</label>
+            @Html.DropDownListFor(x => x.Priority, new SelectList(Model.PriorityOptions.Select(p => new SelectListItem { Value = p.ToString(), Text = p.ToString() }), "Value", "Text"), new { placeholder = "Приоритет", @class = "add-form__dropdown" })
+
+            <input type="submit" value="Создать заметку" class="add-form__button" />
+
+        </form>
+
+    </div>
+</section>
+

@@ -1,0 +1,44 @@
+﻿@using Net14Web.Models.BookingWeb
+@model List<SearchResultViewModel>
+
+@{
+    Layout = "_LayoutBookingWeb";
+}
+@section Style
+{
+    <link href="~/css/booking.css" rel="stylesheet" />
+}
+
+@foreach (var search in Model)
+{
+    <div>
+        User: @search.UserName
+    </div>
+    @if (search.CanDelete)
+    {
+        <a href="RemoveSearch?id=@search.Id">Remove</a>
+    }
+    <div>
+        Country: @search.Country
+    </div>
+    <div>
+        City: @search.City
+        <form action="UpdateCity" method="post">
+            <input type="hidden" name="id" value="@search.Id" />
+            <input name="city" />
+            <input type="submit" value="Update" />
+        </form>
+    </div>
+    <div> 
+        Check-in Date: @search.CheckinDate
+    </div>
+    <div>
+        Check-out Date: @search.CheckoutDate
+    </div>
+    <div>
+        Email: @search.LoginEmail
+    </div>
+    <div>
+        Owner: @search.Owner
+    </div>
+}

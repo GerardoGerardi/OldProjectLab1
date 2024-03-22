@@ -1,0 +1,61 @@
+﻿@model Net14Web.Models.GameShop.GameDto
+
+@{
+    Layout = "_LayoutGameShop";
+}
+
+@section Script {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="~/js/gameShop/comments.js"></script>
+}
+
+@section Style
+{
+    <link href="~/css/games.css" rel="stylesheet" />
+}
+
+<div class="game">
+    <form action="/gameShop/delete" method="post">
+        <input type="hidden" name="id" value="@Model.Id" />
+        <div>
+            <input type="submit" value="X" />
+        </div>
+    </form>
+
+    <div>
+        <img src="@Model.LogoUrl" />
+    </div>
+
+    <div class="game-footer">
+        <div class="name-block">
+            <div>
+                @Model.Name
+            </div>
+        </div>
+        <div class="raiting-block">
+            <div>
+                @Model.Raiting
+            </div>
+        </div>
+        <div class="genre-block">
+            <div>
+                @Model.Genre
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="comments-block">
+    <input type="hidden" class="user-name" value=Guest />
+    <div class="comments">
+        <div class="comment template">
+            <span class="user-name">Guest</span>
+            <span class="comment-text">Be the first commentator</span>
+        </div>
+    </div>
+    <div>
+        <input class="new-comment-text" />
+        <button class="send-comment-button">Send</button>
+    </div>
+</div>

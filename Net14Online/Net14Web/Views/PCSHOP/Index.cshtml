@@ -1,0 +1,33 @@
+﻿@using Net14Web.Models.PcShop
+@model string
+
+@{
+    Layout = "_LayoutPcShop";
+}
+
+@section Style
+{
+    <link href="~/css/PcShop/Index.css" rel="stylesheet" />
+}
+
+@section Script {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/PcShop/index.js"></script>
+}
+
+<div class="color">Привет @Model</div>
+<div>
+    <a href="/PCSHOP/Registration">Registration</a>
+</div>
+<div>
+    <a href="/PCSHOP/Users">Users</a>
+</div>
+<div>
+    <a href="/PCSHOP/EditUserPassword">EditUserPassword</a>
+</div>
+<div>
+    <a href="/PCSHOP/DeleteUsers">DeleteUsers</a>
+</div>
+<div>
+    <a href="/PCSHOP/PCs">PCs</a>
+</div>
